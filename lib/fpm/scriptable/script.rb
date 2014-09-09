@@ -23,6 +23,7 @@ module FPM
 							value.nil? ? @#{opt.to_s} : @#{opt.to_s} = value
 						end
 					}
+				end
 			end
 
       attr_handler :name, :version, :iteration, :description
