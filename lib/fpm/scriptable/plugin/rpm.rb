@@ -39,14 +39,22 @@ module FPM
       end
 
       def plugin_setup
-        @fpm.attributes[:rpm_compression] = @compression
-        @fpm.attributes[:rpm_digest]      = @digest
-        @fpm.attributes[:rpm_user]        = @user
-        @fpm.attributes[:rpm_group]       = @group
+        @fpm.attributes[:rpm_compression] = compression
+        @fpm.attributes[:rpm_digest]      = digest
+        @fpm.attributes[:rpm_user]        = user
+        @fpm.attributes[:rpm_group]       = group
 
         #@fpm.attributes[:rpm_defattrfile] = '-'
         #@fpm.attributes[:rpm_defattrdir] = '-'
       end
+
+      def build_inputs
+        scrrpm.each do |src|
+          @fpm.attributes[:chdir] = src
+          @fpm.input '.'
+        end
+      end
+
     end
 
   end

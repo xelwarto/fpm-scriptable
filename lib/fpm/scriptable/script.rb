@@ -26,24 +26,24 @@ module FPM
         end
       end
 
-			def self.attr_list_handler(*opts)
-				opts.each do |opt|
-					class_eval %Q{
-						def #{opt.to_s}(*list)
-							@#{opt.to_s} ||= []
+      def self.attr_list_handler(*opts)
+        opts.each do |opt|
+          class_eval %Q{
+            def #{opt.to_s}(*list)
+              @#{opt.to_s} ||= []
               @#{opt.to_s} << list
               @#{opt.to_s}.flatten!
               @#{opt.to_s}.uniq!
               @#{opt.to_s}
-						end
-					}
-				end
-			end
+            end
+          }
+        end
+      end
 
-      attr_handler 	:name, :url, :version, :iteration, :description, :dstdir,
-										:category, :arch
+      attr_handler   :name, :url, :version, :iteration, :description, :dstdir,
+                    :category, :arch
 
-			attr_list_handler :depends, :conflicts, :provides, :replaces, :srcdir
+      attr_list_handler :depends, :conflicts, :provides, :replaces, :srcdir
 
       def initialize
         @log              = FPM::Scriptable::Log.instance
@@ -55,61 +55,65 @@ module FPM
         @version          = c.script.version
         @iteration        = c.script.iteration
         @description      = c.script.description
-				@dstdir 					= c.script.dstdir
+        @dstdir           = c.script.dstdir
 
-				plugin_init
+        plugin_init
       end
 
-			def fpm_obj
-				@log.error 'fpm_obj method not implemented in plugin'
+      def fpm_obj
+        @log.error 'fpm_obj method not implemented in plugin'
+      end
+
+      def fpm_convert
+        @log.error 'fpm_convert method not implemented in plugin'
+      end
+
+      def plugin_init
+      end
+
+      def plugin_setup
+      end
+
+			def build_inputs
 			end
 
-			def fpm_convert
-				@log.error 'fpm_convert method not implemented in plugin'
-			end
+      def create
+        begin
+          @fpm                = fpm_obj
 
-			def plugin_init
-			end
+          @fpm.name           = name
+          @fpm.url            = url if !url.nil?
+          @fpm.version        = version
+          @fpm.iteration      = iteration
+          @fpm.category       = category if !category.nil?
+          @fpm.description    = description if !description.nil?
+          @fpm.architecture   = arch if !arch.nil?
 
-			def plugin_setup
-			end
+          @fpm.dependencies   += depends
+          @fpm.conflicts      += conflicts
+          @fpm.provides       += provides
+          @fpm.replaces       += replaces
 
-			def create
-				begin
-					@fpm								= fpm_obj
+          plugin_setup
+					build_inputs
 
-					@fpm.name 					= @name
-	        @fpm.url 						= @url
-					@fpm.version 				= @version
-					@fpm.iteration 			= @iteration
-	        @fpm.category 			= @category
-	        @fpm.description 		= @description
-	        @fpm.architecture 	= @arch
+          #@fpm.config_files +=
+          #fpm.directories +=
+        rescue Exception => e
+          log.error "#{e}"
+        end
 
-					@fpm.dependencies 	+= depends
-	        @fpm.conflicts 			+= conflicts
-	        @fpm.provides 			+= provides
-	        @fpm.replaces 			+= replaces
+        begin
+          f = fpm_convert
 
-					plugin_setup
+          Dir.chdir(@dstdir) do
+            f.output(f.to_s)
+          end
+        rescue Exception => e
+          log.error "#{e}"
+        end
 
-					#@fpm.config_files +=
-	        #fpm.directories +=
-				rescue Exception => e
-					log.error "#{e}"
-				end
-
-				begin
-					f = fpm_convert
-
-					Dir.chdir(@dstdir) do
-						f.output(f.to_s)
-					end
-				rescue Exception => e
-					log.error "#{e}"
-				end
-
-			end
+      end
 
       def log
         @log
