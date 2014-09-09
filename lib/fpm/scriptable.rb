@@ -17,6 +17,7 @@ require 'bundler/setup'
 require 'singleton'
 require 'logger'
 require 'fpm'
+require 'curb'
 
 module FPM
 	module Scriptable
