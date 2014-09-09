@@ -36,12 +36,13 @@ module FPM
       private
 
       class ScriptConstants
-        attr_accessor :version, :iteration, :description
+        attr_accessor :version, :iteration, :description, :dstdir
 
         def initialize
-          @version             = '1.0'
-          @iteration           = '1'
-          @description         = "Packages built using #{@name} v#{@version}"
+          @version            = '1.0'
+          @iteration          = '1'
+          @description        = "Packages built using #{@name} v#{@version}"
+          @dstdir             = '.'
         end
       end
     end

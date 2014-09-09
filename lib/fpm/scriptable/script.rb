@@ -26,7 +26,24 @@ module FPM
         end
       end
 
-      attr_handler :name, :version, :iteration, :description
+			def self.attr_list_handler(*opts)
+				opts.each do |opt|
+					class_eval %Q{
+						def #{opt.to_s}(*list)
+							@#{opt.to_s} ||= []
+              @#{opt.to_s} << list
+              @#{opt.to_s}.flatten!
+              @#{opt.to_s}.uniq!
+              @#{opt.to_s}
+						end
+					}
+				end
+			end
+
+      attr_handler 	:name, :url, :version, :iteration, :description, :dstdir,
+										:category, :arch
+
+			attr_list_handler :depends, :conflicts, :provides, :replaces, :srcdir
 
       def initialize
         @log              = FPM::Scriptable::Log.instance
@@ -38,25 +55,60 @@ module FPM
         @version          = c.script.version
         @iteration        = c.script.iteration
         @description      = c.script.description
+				@dstdir 					= c.script.dstdir
 
-				@fpm							= fpm_obj
+				plugin_init
       end
 
 			def fpm_obj
-				raise Exception 'fpm_obj method not implemented in plugin'
+				@log.error 'fpm_obj method not implemented in plugin'
 			end
 
 			def fpm_convert
-				raise Exception 'fpm_convert method not implemented in plugin'
+				@log.error 'fpm_convert method not implemented in plugin'
+			end
+
+			def plugin_init
+			end
+
+			def plugin_setup
 			end
 
 			def create
-				@fpm.name = @name
-				@fpm.version = @version
-				@fpm.iteration = @iteration
+				begin
+					@fpm								= fpm_obj
 
-				f = fpm_convert
-				puts f.to_s
+					@fpm.name 					= @name
+	        @fpm.url 						= @url
+					@fpm.version 				= @version
+					@fpm.iteration 			= @iteration
+	        @fpm.category 			= @category
+	        @fpm.description 		= @description
+	        @fpm.architecture 	= @arch
+
+					@fpm.dependencies 	+= @depends
+	        @fpm.conflicts 			+= @conflicts
+	        @fpm.provides 			+= @provides
+	        @fpm.replaces 			+= @replaces
+
+					plugin_setup
+
+					#@fpm.config_files +=
+	        #fpm.directories +=
+				rescue Exception => e
+					log.erro "#{e}"
+				end
+
+				begin
+					f = fpm_convert
+
+					Dir.chdir(@dstdir) do
+						f.output(f.to_s)
+					end
+				rescue Exception => e
+					log.erro "#{e}"
+				end
+
 			end
 
       def log

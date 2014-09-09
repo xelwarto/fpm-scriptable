@@ -18,6 +18,10 @@ module FPM
     class RPM < FPM::Scriptable::Script
       TYPE = 'rpm'
 
+      attr_handler :compression, :digest, :user, :group
+
+      attr_list_handler :scrrpm
+
       def fpm_obj
         FPM::Package::Dir.new
       end
@@ -25,6 +29,23 @@ module FPM
       def fpm_convert
         obj = FPM::Package.types[TYPE]
         @fpm.convert(obj)
+      end
+
+      def plugin_init
+        @compression  = 'gzip'
+        @digest       = 'md5'
+        @user         = 'root'
+        @group        = 'root'
+      end
+
+      def plugin_setup
+        @fpm.attributes[:rpm_compression] = @compression
+        @fpm.attributes[:rpm_digest]      = @digest
+        @fpm.attributes[:rpm_user]        = @user
+        @fpm.attributes[:rpm_group]       = @group
+
+        #@fpm.attributes[:rpm_defattrfile] = '-'
+        #@fpm.attributes[:rpm_defattrdir] = '-'
       end
     end
 
