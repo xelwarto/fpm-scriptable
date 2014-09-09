@@ -66,7 +66,7 @@ module FPM
             Dir.chdir(tmp_dir) do
               open(rpm_name, "w") do |f|
                 c = Curl.get rpm
-                f.puts c.body_str
+                f.write c.body_str
               end
 
               fpm_rpm = FPM::Package::RPM.new
