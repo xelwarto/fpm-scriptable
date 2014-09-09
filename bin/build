@@ -30,7 +30,8 @@ else
   exit 1
 end
 
-Dir.chdir app_dir
-require 'fpm/scriptable'
+Dir.chdir(app_dir) do
+  require 'fpm/scriptable'
+end
 FPM::Scriptable::App.run(app_dir)
 exit 0
