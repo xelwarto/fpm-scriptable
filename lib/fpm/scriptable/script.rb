@@ -25,7 +25,6 @@ module FPM
 
 				@log.debug 'FPM::Scriptable::RPM - initializing Script'
 
-				@name							= c.script.name
 				@version					= c.script.version
 				@iteration				= c.script.iteration
 				@description			= c.script.description
@@ -48,10 +47,7 @@ module FPM
 			end
 
 			def name(value=nil)
-				if !value.nil?
-					name = value
-				end
-				name
+				name = value
 			end
 
 		end
