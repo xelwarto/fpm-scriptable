@@ -61,7 +61,7 @@ module FPM
       --nocolor               Turn off colors in console output
       --log_level <lvl>       STDOUT log level (info, debug, error)
 
-      --script <file>         Script to run
+      --script <file>         Script to build
 
 EOF
         usage
