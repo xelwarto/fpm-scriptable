@@ -47,7 +47,11 @@ module FPM
       end
 
       def name(value=nil)
-        @name = value
+				if value.nil?
+					@name
+				else
+        	@name = value
+				end
       end
 
     end
