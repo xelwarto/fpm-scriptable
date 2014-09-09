@@ -40,6 +40,7 @@ module FPM
         cfg = FPM::Scriptable::Config.instance
         @config = cfg.config
         @config.app_dir = app_dir
+        @config.working_dir = Dir.getwd
 
         script = args[:script]
         if script.nil?
@@ -49,6 +50,10 @@ module FPM
         else
           if script !~ /^\//
             script = "#{@config.app_dir}/#{script}"
+
+            if !File.exists? script
+              script = "#{@config.working_dir}/#{script}"
+            end
           end
 
           @log.debug "FPM::Scriptable::App - Script file path set to: #{script}"
