@@ -23,7 +23,7 @@ module FPM
       end
 
       def fpm_convert
-        FPM::Package.types[TYPE]
+        obj = FPM::Package.types[TYPE]
         @fpm.convert(obj)
       end
     end
