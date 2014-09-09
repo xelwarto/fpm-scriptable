@@ -22,9 +22,7 @@ module FPM
                     :cfg_file,
                     :name,
                     :log_level,
-  									:script_version,
-                    :script_iteation,
-                    :script_description
+  									:script
 
       def initialize
         @name         				= 'fpm-scriptable'
@@ -32,9 +30,19 @@ module FPM
         @author       				= 'Ted Elwartowski <xelwarto.pub@gmail.com> (2014)'
         @log_level    				= :info
 
-  			@script_version					= '1.0'
-  			@script_iteation				= '1'
-  			@script_description			= "Packages built using #{@name} v#{@version}"
+        @script               = ScriptConstants.new
+      end
+
+      private
+
+      class ScriptConstants
+        attr_accessor :version, :iteration, :description
+
+        def initialize
+          @version					   = '1.0'
+          @iteation				     = '1'
+          @description			   = "Packages built using #{@name} v#{@version}"
+        end
       end
     end
   end
