@@ -69,6 +69,7 @@ module FPM
             end
 
             #File.delete rpm_name
+          end
         end
 
         #Dir.delete tmp_dir
