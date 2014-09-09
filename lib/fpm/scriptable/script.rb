@@ -13,43 +13,43 @@
 # limitations under the License.
 
 module FPM
-	module Scriptable
-		class Script
+  module Scriptable
+    class Script
 
-			attr_accessor :name, :version, :iteration, :description
+      attr_accessor :name, :version, :iteration, :description
 
-			def initialize
-				@log 							= FPM::Scriptable::Log.instance
-				@config 					= FPM::Scriptable::Config.instance.config
-				c 								= FPM::Scriptable::Constants.instance
+      def initialize
+        @log              = FPM::Scriptable::Log.instance
+        @config           = FPM::Scriptable::Config.instance.config
+        c                 = FPM::Scriptable::Constants.instance
 
-				@log.debug 'FPM::Scriptable::RPM - initializing Script'
+        @log.debug 'FPM::Scriptable::RPM - initializing Script'
 
-				@version					= c.script.version
-				@iteration				= c.script.iteration
-				@description			= c.script.description
-			end
+        @version          = c.script.version
+        @iteration        = c.script.iteration
+        @description      = c.script.description
+      end
 
-			def log
-				@log
-			end
+      def log
+        @log
+      end
 
-			def config
-				@config
-			end
+      def config
+        @config
+      end
 
-			def self.build(&block)
-				RPM.new.instance_eval(&block)
-			end
+      def self.build(&block)
+        RPM.new.instance_eval(&block)
+      end
 
-			def get_binding
-				binding
-			end
+      def get_binding
+        binding
+      end
 
-			def name(value=nil)
-				@name = value
-			end
+      def name(value=nil)
+        @name = value
+      end
 
-		end
-	end
+    end
+  end
 end
