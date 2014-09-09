@@ -49,7 +49,7 @@ module FPM
       end
 
       def self.build(&block)
-        RPM.new.instance_eval(&block)
+        FPM::Scriptable::Script.new.instance_eval(&block)
       end
 
       def get_binding
