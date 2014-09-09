@@ -20,7 +20,7 @@ module FPM
 
       attr_handler :compression, :digest, :user, :group
 
-      attr_list_handler :scrrpm
+      attr_list_handler :srcrpm
 
       def fpm_obj
         FPM::Package::Dir.new
@@ -54,25 +54,27 @@ module FPM
           @fpm.input '.'
         end
 
-        t = Time.now.to_i
-        tmp_dir = "/tmp/#{@name}_rpm_#{t.to_s}"
-        Dir.mkdir tmp_dir
+        if !srcrpm.nil? && srcrpm.size > 0
+          t = Time.now.to_i
+          tmp_dir = "/tmp/#{@name}_rpm_#{t.to_s}"
+          Dir.mkdir tmp_dir
 
-        scrrpm.each do |rpm|
-          rpm_data = rpm.split(/\//)
-          rpm_name = rpm_data.last
+          srcrpm.each do |rpm|
+            rpm_data = rpm.split(/\//)
+            rpm_name = rpm_data.last
 
-          Dir.chdir(tmp_dir) do
-            open(rpm_name, "w") do |f|
-              c = Curl.get rpm
-              f.puts c.body_str
+            Dir.chdir(tmp_dir) do
+              open(rpm_name, "w") do |f|
+                c = Curl.get rpm
+                f.puts c.body_str
+              end
+
+              #File.delete rpm_name
             end
-
-            #File.delete rpm_name
           end
-        end
 
-        #Dir.delete tmp_dir
+          #Dir.delete tmp_dir
+        end
       end
 
     end
