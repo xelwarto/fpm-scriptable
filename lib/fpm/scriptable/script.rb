@@ -96,7 +96,7 @@ module FPM
 					#@fpm.config_files +=
 	        #fpm.directories +=
 				rescue Exception => e
-					log.erro "#{e}"
+					log.error "#{e}"
 				end
 
 				begin
@@ -106,7 +106,7 @@ module FPM
 						f.output(f.to_s)
 					end
 				rescue Exception => e
-					log.erro "#{e}"
+					log.error "#{e}"
 				end
 
 			end
