@@ -52,6 +52,7 @@ module FPM
             script = "#{@config.app_dir}/#{script}"
 
             if !File.exists? script
+              script = args[:script]
               script = "#{@config.working_dir}/#{script}"
             end
           end
