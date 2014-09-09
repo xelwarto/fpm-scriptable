@@ -86,10 +86,10 @@ module FPM
 	        @fpm.description 		= @description
 	        @fpm.architecture 	= @arch
 
-					@fpm.dependencies 	+= @depends
-	        @fpm.conflicts 			+= @conflicts
-	        @fpm.provides 			+= @provides
-	        @fpm.replaces 			+= @replaces
+					@fpm.dependencies 	+= depends
+	        @fpm.conflicts 			+= conflicts
+	        @fpm.provides 			+= provides
+	        @fpm.replaces 			+= replaces
 
 					plugin_setup
 
