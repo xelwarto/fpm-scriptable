@@ -53,6 +53,25 @@ module FPM
           @fpm.attributes[:chdir] = src
           @fpm.input '.'
         end
+
+        t = Time.now.to_i
+        tmp_dir = "/tmp/#{@name}_rpm_#{t.to_s}"
+        Dir.mkdir tmp_dir
+
+        scrrpm.each do |rpm|
+          rpm_data = rpm.split(/\//)
+          rpm_name = rpm_data.last
+
+          Dir.chdir(tmp_dir) do
+            open(rpm_name, "w") do |f|
+              c = Curl.get rpm
+              f.puts c.body_str
+            end
+
+            #File.delete rpm_name
+        end
+
+        #Dir.delete tmp_dir
       end
 
     end
