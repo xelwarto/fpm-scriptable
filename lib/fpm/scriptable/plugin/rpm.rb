@@ -16,6 +16,16 @@ module FPM
   module Scriptable
 
     class RPM < FPM::Scriptable::Script
+      TYPE = 'rpm'
+
+      def fpm_obj
+        FPM::Package::Dir.new
+      end
+
+      def fpm_convert
+        FPM::Package.types[TYPE]
+        @fpm.convert(obj)
+      end
     end
 
   end

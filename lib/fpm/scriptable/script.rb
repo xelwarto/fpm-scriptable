@@ -38,7 +38,26 @@ module FPM
         @version          = c.script.version
         @iteration        = c.script.iteration
         @description      = c.script.description
+
+				@fpm							= fpm_obj
       end
+
+			def fpm_obj
+				raise Exception 'fpm_obj method not implemented in plugin'
+			end
+
+			def fpm_convert
+				raise Exception 'fpm_convert method not implemented in plugin'
+			end
+
+			def create
+				@fpm.name = @name
+				@fpm.version = @version
+				@fpm.iteration = @iteration
+
+				f = fpm_convert
+				puts f.to_s
+			end
 
       def log
         @log
