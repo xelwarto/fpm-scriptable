@@ -28,28 +28,11 @@ module FPM
 
       protected
 
-      class RpmConfig
-        attr_accessor :name, :version, :iteration, :description,
-                      :depends, :replaces
-
-        def initialize
-          c = FPM::Scriptable::Constants.instance
-
-          @name           = nil
-          @version        = c.rpm_version
-          @iteration      = c.rpm_iteation
-          @description    = c.rpm_description
-          @depends        = []
-          @replaces       = []
-        end
-      end
-
       class GeneralConfig
-        attr_accessor :app_dir, :rpm
+        attr_accessor :app_dir
 
         def initialize
           @app_dir        = nil
-          @rpm            = RpmConfig.new
 
           @u_defined      = {}
         end
