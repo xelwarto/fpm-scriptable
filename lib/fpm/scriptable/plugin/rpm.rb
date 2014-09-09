@@ -69,11 +69,17 @@ module FPM
                 f.puts c.body_str
               end
 
-              #File.delete rpm_name
+              fpm_rpm = FPM::Package::RPM.new
+              fpm_rpm.input rpm_name
+
+              @fpm.attributes[:chdir] = fpm_rpm.staging_path
+              @fpm.input '.'
+              
+              File.delete rpm_name
             end
           end
 
-          #Dir.delete tmp_dir
+          Dir.delete tmp_dir
         end
       end
 
