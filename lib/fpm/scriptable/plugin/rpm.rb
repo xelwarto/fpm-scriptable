@@ -49,7 +49,7 @@ module FPM
       end
 
       def build_inputs
-        scrrpm.each do |src|
+        srcdir.each do |src|
           @fpm.attributes[:chdir] = src
           @fpm.input '.'
         end
