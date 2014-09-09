@@ -12,23 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'rubygems'
-require 'bundler/setup'
-require 'singleton'
-require 'logger'
-require 'fpm'
-
 module FPM
-	module Scriptable
-		# Core classes
-		autoload :App, "fpm/scriptable/app"
-		autoload :Config, "fpm/scriptable/config"
-		autoload :Log, "fpm/scriptable/log"
-		autoload :Util, "fpm/scriptable/util"
-		autoload :Constants, "fpm/scriptable/constants"
-		autoload :Script, "fpm/scriptable/script"
+  module Scriptable
 
-		# Package type plugins
-		autoload :RPM, "fpm/scriptable/plugin/rpm"
-	end
+    class RPM < FPM::Scriptable::Script
+    end
+
+  end
 end
