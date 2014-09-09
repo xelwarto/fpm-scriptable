@@ -21,6 +21,7 @@ module FPM
 					instance_eval %Q{
 						def #{opt.to_s}(value=nil)
 							value.nil? ? @#{opt.to_s} : @#{opt.to_s} = value
+						end
 					}
 			end
 
