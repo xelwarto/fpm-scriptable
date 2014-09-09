@@ -47,7 +47,7 @@ module FPM
 			end
 
 			def name(value=nil)
-				name = value
+				@name = value
 			end
 
 		end
