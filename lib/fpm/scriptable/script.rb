@@ -16,15 +16,15 @@ module FPM
   module Scriptable
     class Script
 
-			def self.attr_handler(*opts)
-				opts.each do |opt|
-					instance_eval %Q{
-						def #{opt.to_s}(value=nil)
-							value.nil? ? @#{opt.to_s} : @#{opt.to_s} = value
-						end
-					}
-				end
-			end
+      def self.attr_handler(*opts)
+        opts.each do |opt|
+          instance_eval %Q{
+            def #{opt.to_s}(value=nil)
+              value.nil? ? @#{opt.to_s} : @#{opt.to_s} = value
+            end
+          }
+        end
+      end
 
       attr_handler :name, :version, :iteration, :description
 
