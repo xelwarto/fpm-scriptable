@@ -40,7 +40,7 @@ module FPM
 
         def initialize
           @version					   = '1.0'
-          @iteation				     = '1'
+          @iteration				   = '1'
           @description			   = "Packages built using #{@name} v#{@version}"
         end
       end
