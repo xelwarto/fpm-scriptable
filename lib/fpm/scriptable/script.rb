@@ -18,7 +18,7 @@ module FPM
 
       def self.attr_handler(*opts)
         opts.each do |opt|
-          instance_eval %Q{
+          class_eval %Q{
             def #{opt.to_s}(value=nil)
               value.nil? ? @#{opt.to_s} : @#{opt.to_s} = value
             end
@@ -35,9 +35,9 @@ module FPM
 
         @log.debug 'FPM::Scriptable::RPM - initializing Script'
 
-        version          = c.script.version
-        iteration        = c.script.iteration
-        description      = c.script.description
+        @version          = c.script.version
+        @iteration        = c.script.iteration
+        @description      = c.script.description
       end
 
       def log
