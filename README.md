@@ -10,7 +10,7 @@
 
 **fpm-scriptable** provides a simple and easy to use scripting interface for creating software packages with fpm (https://github.com/jordansissel/fpm). Software packages are created using easy to read scripts written in a simple DSL. Scripts can easily be added to source code to ensure they are properly versioned.
 
-Specific package types are provided by **fpm-scriptable** plug-ins. Plug-ins are script extensions which provide specific FPM software packing.
+Specific package types are provided by **fpm-scriptable** plug-ins. Plug-ins are script extensions which provide specific FPM software packaging.
 
 Current Plugins:
 
