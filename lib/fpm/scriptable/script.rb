@@ -107,6 +107,7 @@ module FPM
           f = fpm_convert
 
           Dir.chdir(@dstdir) do
+            @log.info "Building package: #{f.to_s}"
             f.output(f.to_s)
           end
         rescue Exception => e
