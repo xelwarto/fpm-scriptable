@@ -12,7 +12,7 @@
 
 Specific package types are provided by **fpm-scriptable** plug-ins. Plug-ins are script extensions which provide specific FPM software packaging.
 
-Current Plugins:
+Current Plug-ins:
 
 * **FPM::Scriptable::RPM** - Support for RPM packaging
 
