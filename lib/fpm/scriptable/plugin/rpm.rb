@@ -44,6 +44,7 @@ module FPM
         @fpm.attributes[:rpm_user]        = user
         @fpm.attributes[:rpm_group]       = group
 
+        # TODO
         #@fpm.attributes[:rpm_defattrfile] = '-'
         #@fpm.attributes[:rpm_defattrdir] = '-'
       end
@@ -74,7 +75,7 @@ module FPM
 
               @fpm.attributes[:chdir] = fpm_rpm.staging_path
               @fpm.input '.'
-              
+
               File.delete rpm_name
             end
           end

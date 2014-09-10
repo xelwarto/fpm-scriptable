@@ -41,7 +41,7 @@ module FPM
       end
 
       attr_handler   :name, :url, :version, :iteration, :description, :dstdir,
-                    :category, :arch
+                    :category, :arch, :license, :epoch, :maintainer, :vendor
 
       attr_list_handler :depends, :conflicts, :provides, :replaces, :srcdir
 
@@ -74,8 +74,8 @@ module FPM
       def plugin_setup
       end
 
-			def build_inputs
-			end
+      def build_inputs
+      end
 
       def create
         begin
@@ -88,6 +88,10 @@ module FPM
           @fpm.category       = category if !category.nil?
           @fpm.description    = description if !description.nil?
           @fpm.architecture   = arch if !arch.nil?
+          @fpm.license        = license if !license.nil?
+          @fpm.epoch          = epoch if !epoch.nil?
+          @fpm.maintainer     = maintainer if !maintainer.nil?
+          @fpm.vendor         = vendor if !vendor.nil?
 
           @fpm.dependencies   += depends
           @fpm.conflicts      += conflicts
@@ -95,10 +99,12 @@ module FPM
           @fpm.replaces       += replaces
 
           plugin_setup
-					build_inputs
+          build_inputs
 
+          # TODO
           #@fpm.config_files +=
-          #fpm.directories +=
+          #@fpm.directories +=
+          #@fom.attributes[:excludes]
         rescue Exception => e
           log.error "#{e}"
         end
