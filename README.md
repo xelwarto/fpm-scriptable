@@ -79,15 +79,13 @@ FPM::Scriptable::RPM.build do
   # Package Name
   name 'test-pkg'
   
-  env.rpm_version.nil? ?
-    rpm_version = '1.0' :
-    rpm_version = env.rpm_version
-  version rpm_version
+  # Set Package Version
+  env.rpm_version ||= '1.0' 
+  version env.rpm_version
 
-  env.rpm_iteration.nil? ?
-    rpm_iteration = '1' :
-    rpm_iteration = env.rpm_iteration
-  iteration rpm_iteration
+  # Set Package Iteration
+  env.rpm_iteration ||= '1' 
+  iteration env.rpm_iteration
 
   # Package Source 
   srcdir '/path/to/source/directory'
