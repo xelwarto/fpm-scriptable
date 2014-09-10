@@ -7,3 +7,24 @@
 </dl>
 
 ## Description
+
+**fpm-scriptable** provides a simple and easy to use scripting interface for creating software packages with fpm (https://github.com/jordansissel/fpm). Software packages are created using easy to read scripts written in a simple DSL. Scripts can easily be added to source code to ensure they are properly versioned.
+
+Specific package types are provided by **fpm-scriptable** plug-ins. Plug-ins are script extensions which provide specific FPM software packing.
+
+Current Plugins:
+
+* FPM::Scriptable::RPM - Support for RPM packaging
+
+## Installation
+
+Currently a Ruby gem is not available ... source can be cloned and then run bundler to install dependencies.
+
+## Usage
+
+```bash
+bin/fpm-script --script <script_file>
+```
+
+## Sample Scripts
+
