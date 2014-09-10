@@ -175,12 +175,21 @@ module FPM
       def handler(name, *opts)
         if !name.nil?
           name = name.to_s
-          if ENV.has_key? name
-            ENV[name]
+
+          if name =~ /\=\z/
+            name.gsub! /\=/, ''
+            if opts.size == 1
+              name.upcase!
+              ENV[name] = opts.first
+            end
           else
-            name.upcase!
             if ENV.has_key? name
               ENV[name]
+            else
+              name.upcase!
+              if ENV.has_key? name
+                ENV[name]
+              end
             end
           end
         end
