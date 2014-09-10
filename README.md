@@ -96,3 +96,66 @@ FPM::Scriptable::RPM.build do
   create
 end
 ```
+
+Setting package dependencies
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+  
+  # Package Version
+  version '1.0'
+
+  # Package Source 
+  srcdir '/path/to/source/directory'
+  
+  # Package Dependencies
+  depends 'package1'
+  depends 'package2 = 1.1.1'
+  depends 'package3 >= 1.0'
+
+  # Create Package
+  create
+end
+```
+
+Setting destination directory
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+  
+  # Package Version
+  version '1.0'
+
+  # Package Source 
+  srcdir "#{config.working_dir}/IN"
+
+  # Create Package
+  dstdir "#{config.working_dir}/OUT"
+  create
+end
+```
+
+Including other RPMs in source - will download and expand RPM in to package source
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+  
+  # Package Version
+  version '1.0'
+
+  # Package Source 
+  srcdir '/path/to/source/directory'
+  
+  # Include RPM
+  srcrpm 'http://fedora-epel.mirror.lstn.net/6/i386/epel-release-6-8.noarch.rpm'
+
+  # Create Package
+  create
+end
+```
