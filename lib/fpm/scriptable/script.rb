@@ -98,6 +98,11 @@ module FPM
           @fpm.provides       += provides
           @fpm.replaces       += replaces
 
+          @fpm.scripts[:before_install]   = before_install if !before_install.nil?
+          @fpm.scripts[:after_install]    = after_install if !after_install.nil?
+          @fpm.scripts[:before_remove]    = before_remove if !before_remove.nil?
+          @fpm.scripts[:after_remove]     = after_remove if !after_remove.nil?
+
           plugin_setup
           build_inputs
 
