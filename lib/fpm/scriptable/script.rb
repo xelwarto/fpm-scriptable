@@ -159,14 +159,13 @@ module FPM
         binding
       end
 
-    end
+      private
 
-    private
-
-    def expand_script(file=nil)
-      if !file.nil?
-        if File.exists? file
-          File.read file
+      def expand_script(file=nil)
+        if !file.nil?
+          if File.exists? file
+            File.read file
+          end
         end
       end
     end
