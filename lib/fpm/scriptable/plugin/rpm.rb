@@ -47,6 +47,9 @@ module FPM
         # TODO
         #@fpm.attributes[:rpm_defattrfile] = '-'
         #@fpm.attributes[:rpm_defattrdir] = '-'
+        #@fpm.scripts[:rpm_verifyscript] =
+        #@fpm.scripts[:rpm_posttrans] =
+        #@fpm.scripts[:rpm_pretrans] = 
       end
 
       def build_inputs
