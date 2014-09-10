@@ -20,16 +20,16 @@ require 'fpm'
 require 'curb'
 
 module FPM
-	module Scriptable
-		# Core classes
-		autoload :App, "fpm/scriptable/app"
-		autoload :Config, "fpm/scriptable/config"
-		autoload :Log, "fpm/scriptable/log"
-		autoload :Util, "fpm/scriptable/util"
-		autoload :Constants, "fpm/scriptable/constants"
-		autoload :Script, "fpm/scriptable/script"
+  module Scriptable
+    # Core classes
+    autoload :App, "fpm/scriptable/app"
+    autoload :Config, "fpm/scriptable/config"
+    autoload :Log, "fpm/scriptable/log"
+    autoload :Util, "fpm/scriptable/util"
+    autoload :Constants, "fpm/scriptable/constants"
+    autoload :Script, "fpm/scriptable/script"
 
-		# Package type plugins
-		autoload :RPM, "fpm/scriptable/plugin/rpm"
-	end
+    # Package type plugins
+    autoload :RPM, "fpm/scriptable/plugin/rpm"
+  end
 end
