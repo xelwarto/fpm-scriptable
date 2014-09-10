@@ -41,7 +41,8 @@ module FPM
       end
 
       attr_handler   :name, :url, :version, :iteration, :description, :dstdir,
-                    :category, :arch, :license, :epoch, :maintainer, :vendor
+                    :category, :arch, :license, :epoch, :maintainer, :vendor,
+                    :before_install, :after_install, :before_remove, :after_remove
 
       attr_list_handler :depends, :conflicts, :provides, :replaces, :srcdir
 
