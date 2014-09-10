@@ -144,6 +144,11 @@ module FPM
           name = name.to_s
           if ENV.has_key? name
             ENV[name]
+          else
+            name.upcase!
+            if ENV.has_key? name
+              ENV[name]
+            end
           end
         end
       end
