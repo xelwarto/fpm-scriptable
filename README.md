@@ -145,6 +145,30 @@ FPM::Scriptable::RPM.build do
 end
 ```
 
+Including scripts in a package
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+  
+  # Package Version
+  version '1.0'
+
+  # Package Source 
+  srcdir '/path/to/source/directory'
+  
+  # Package Scripts
+  before_install '/path/to/script/file'
+  after_install '/path/to/script/file'
+  before_remove '/path/to/script/file'
+  after_remove '/path/to/script/file'
+
+  # Create Package
+  create
+end
+```
+
 Including other RPMs in source - will download and expand RPM in to package source
 
 ```ruby
