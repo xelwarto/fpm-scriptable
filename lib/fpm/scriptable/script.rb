@@ -99,10 +99,21 @@ module FPM
           @fpm.provides       += provides
           @fpm.replaces       += replaces
 
-          @fpm.scripts[:before_install]   = before_install if !before_install.nil?
-          @fpm.scripts[:after_install]    = after_install if !after_install.nil?
-          @fpm.scripts[:before_remove]    = before_remove if !before_remove.nil?
-          @fpm.scripts[:after_remove]     = after_remove if !after_remove.nil?
+          if !before_install.nil?
+            @fpm.scripts[:before_install] = expand_script(before_install)
+          end
+
+          if !after_install.nil?
+            @fpm.scripts[:after_install] = expand_script(after_install)
+          end
+
+          if !before_remove.nil?
+            @fpm.scripts[:before_remove] = expand_script(before_remove)
+          end
+
+          if !after_remove.nil?
+            @fpm.scripts[:after_remove] = expand_script(after_remove)
+          end
 
           plugin_setup
           build_inputs
@@ -148,6 +159,16 @@ module FPM
         binding
       end
 
+    end
+
+    private
+
+    def expand_script(file=nil)
+      if !file.nil?
+        if File.exists? file
+          File.read file
+        end
+      end
     end
 
     class EnvHandler
