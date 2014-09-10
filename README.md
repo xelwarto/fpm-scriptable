@@ -114,6 +114,12 @@ FPM::Scriptable::RPM.build do
   depends 'package1'
   depends 'package2 = 1.1.1'
   depends 'package3 >= 1.0'
+  
+  # Package Replaces
+  replaces 'test-pkg*'
+  
+  # Package Conflicts
+  conflicts 'test-pkg2'
 
   # Create Package
   create
