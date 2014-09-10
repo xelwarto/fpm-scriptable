@@ -115,6 +115,10 @@ module FPM
 
       end
 
+      def env
+        @env ||= EnvHandler.new
+      end
+
       def log
         @log
       end
@@ -130,6 +134,21 @@ module FPM
       def get_binding
         binding
       end
+
+    end
+
+    class EnvHandler
+
+      def handler(name, *opts)
+        if !name.nil?
+          name = name.to_s
+          if ENV.has_key? name
+            ENV[name]
+          end
+        end
+      end
+
+      alias method_missing handler
 
     end
   end
