@@ -14,7 +14,7 @@ Specific package types are provided by **fpm-scriptable** plug-ins. Plug-ins are
 
 Current Plugins:
 
-* FPM::Scriptable::RPM - Support for RPM packaging
+* **FPM::Scriptable::RPM** - Support for RPM packaging
 
 ## Installation
 
@@ -27,4 +27,22 @@ bin/fpm-script --script <script_file>
 ```
 
 ## Sample Scripts
+
+Simple script for packaging source code
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+  
+  # Package Version
+  version '1.0' # Package Version
+
+  # Package Source 
+  srcdir '/path/to/source/directory'
+
+  # Create Package
+  create
+end
+```
 
