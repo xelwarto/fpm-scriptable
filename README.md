@@ -36,7 +36,7 @@ FPM::Scriptable::RPM.build do
   name 'test-pkg'
   
   # Package Version
-  version '1.0' # Package Version
+  version '1.0'
 
   # Package Source 
   srcdir '/path/to/source/directory'
@@ -46,3 +46,53 @@ FPM::Scriptable::RPM.build do
 end
 ```
 
+Script with multiple source directories
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+  
+  # Package Version
+  version '1.0'
+  
+  # Package Iteration
+  iteration '1'
+  
+  # Package Description
+  description 'Test Package'
+
+  # Package Source
+  srcdir '/first/path/to/source/directory'
+  srcdir '/second/path/to/source/directory'
+  srcdir '/third/path/to/source/directory'
+
+  # Create Package
+  create
+end
+```
+
+Using environment variables to set package information
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+  
+  env.rpm_version.nil? ?
+    rpm_version = '1.0' :
+    rpm_version = env.rpm_version
+  version rpm_version
+
+  env.rpm_iteration.nil? ?
+    rpm_iteration = '1' :
+    rpm_iteration = env.rpm_iteration
+  iteration rpm_iteration
+
+  # Package Source 
+  srcdir '/path/to/source/directory'
+
+  # Create Package
+  create
+end
+```
