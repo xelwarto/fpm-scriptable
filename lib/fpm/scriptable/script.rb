@@ -44,7 +44,7 @@ module FPM
                     :category, :arch, :license, :epoch, :maintainer, :vendor,
                     :before_install, :after_install, :before_remove, :after_remove
 
-      attr_list_handler :depends, :conflicts, :provides, :replaces, :srcdir
+      attr_list_handler :depends, :conflicts, :provides, :replaces, :excludes, :srcdir
 
       def initialize
         @log              = FPM::Scriptable::Log.instance
@@ -98,6 +98,8 @@ module FPM
           @fpm.conflicts      += conflicts
           @fpm.provides       += provides
           @fpm.replaces       += replaces
+
+          @fpm.attributes[:excludes] = excludes
 
           if !before_install.nil?
             @fpm.scripts[:before_install] = expand_script(before_install)
