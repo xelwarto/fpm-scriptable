@@ -34,9 +34,6 @@ Simple script for packaging source code
 FPM::Scriptable::RPM.build do
   # Package Name
   name 'test-pkg'
-  
-  # Package Version
-  version '1.0'
 
   # Package Source 
   srcdir '/path/to/source/directory'
