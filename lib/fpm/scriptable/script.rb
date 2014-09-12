@@ -43,7 +43,7 @@ module FPM
       attr_handler   :name, :url, :version, :iteration, :description, :dstdir,
                     :category, :arch, :license, :epoch, :maintainer, :vendor,
                     :before_install, :after_install, :before_remove, :after_remove,
-                    :overwrite
+                    :overwrite, :workdir
 
       attr_list_handler :depends, :conflicts, :provides, :replaces, :excludes, :srcdir
 
@@ -81,6 +81,8 @@ module FPM
 
       def create
         begin
+          ENV['TMP']          = workdir if !workdir.nil?
+
           @fpm                = fpm_obj
 
           @fpm.name           = name
