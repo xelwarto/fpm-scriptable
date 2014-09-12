@@ -164,7 +164,7 @@ FPM::Scriptable::RPM.build do
 end
 ```
 
-Ecluding files and directories
+Excluding files and directories
 
 ```ruby
 FPM::Scriptable::RPM.build do
