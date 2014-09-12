@@ -129,22 +129,27 @@ module FPM
           log.error "#{e}"
         end
 
+        package = nil
         begin
-          f = fpm_convert
+          package = fpm_convert
 
-          Dir.chdir(@dstdir) do
-            if File.exists? f.to_s
-              if !overwrite.nil?
-                force = overwrite.to_s.downcase
-                if force == 'true'
-                  @log.info "Overwrite enabled - Removing package: #{f.to_s}"
-                  FileUtils.rm_f(f.to_s)
+          if !package.nil?
+            Dir.chdir(@dstdir) do
+              if File.exists? package.to_s
+                if !overwrite.nil?
+                  force = overwrite.to_s.downcase
+                  if force == 'true'
+                    @log.info "Overwrite enabled - Removing package: #{package.to_s}"
+                    FileUtils.rm_f(package.to_s)
+                  end
                 end
               end
-            end
 
-            @log.info "Building package: #{f.to_s}"
-            f.output(f.to_s)
+              @log.info "Building package: #{package.to_s}"
+              package.output(package.to_s)
+            end
+          else
+            @log.error 'Failed to convert - Packaging object is invalid'
           end
         rescue Exception => e
           log.error "#{e}"
