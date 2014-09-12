@@ -186,6 +186,42 @@ FPM::Scriptable::RPM.build do
 end
 ```
 
+Overwrite existing package file
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+
+  # Package Source 
+  srcdir '/path/to/source/directory'
+
+  # Overwrite Enabled
+  overwrite = 'true'
+  
+  # Create Package
+  create
+end
+```
+
+Set the FPM working directory
+
+```ruby
+FPM::Scriptable::RPM.build do
+  # Package Name
+  name 'test-pkg'
+
+  # Package Source 
+  srcdir '/path/to/source/directory'
+
+  # Set Working Directory
+  workdir 'path/to/working/dir'
+  
+  # Create Package
+  create
+end
+```
+
 Including other RPMs in source - will download and expand RPM in to package source
 
 ```ruby
