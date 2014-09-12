@@ -42,7 +42,8 @@ module FPM
 
       attr_handler   :name, :url, :version, :iteration, :description, :dstdir,
                     :category, :arch, :license, :epoch, :maintainer, :vendor,
-                    :before_install, :after_install, :before_remove, :after_remove
+                    :before_install, :after_install, :before_remove, :after_remove,
+                    :overwrite
 
       attr_list_handler :depends, :conflicts, :provides, :replaces, :excludes, :srcdir
 
@@ -132,6 +133,16 @@ module FPM
           f = fpm_convert
 
           Dir.chdir(@dstdir) do
+            if File.exists? f.to_s
+              if !overwrite.nil?
+                force = overwrite.to_s.downcase
+                if force == 'true'
+                  @log.info "Overwrite enabled - Removing package: #{f.to_s}"
+                  FileUtils.rm_f(f.to_s)
+                end
+              end
+            end
+
             @log.info "Building package: #{f.to_s}"
             f.output(f.to_s)
           end
