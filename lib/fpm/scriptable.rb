@@ -13,11 +13,12 @@
 # limitations under the License.
 
 require 'rubygems'
-require 'bundler/setup'
 require 'singleton'
 require 'logger'
 require 'fpm'
 require 'curb'
+
+require 'fpm/scriptable/version'
 
 module FPM
   module Scriptable
