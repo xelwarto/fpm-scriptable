@@ -19,8 +19,8 @@ Gem::Specification.new do |spec|
   spec.email        = ['xelwarto.pub@gmail.com']
   spec.homepage     = 'https://github.com/xelwarto/fpm-scriptable'
 
-  spec.add_dependency 'curb'
-  spec.add_dependency 'fpm'
+  spec.add_dependency 'curb', '~> 0.8'
+  spec.add_dependency 'fpm', '~> 1.3'
 
   files = []
   dirs = %w{lib bin}
