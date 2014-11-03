@@ -22,12 +22,14 @@ module FPM
                     :cfg_file,
                     :name,
                     :log_level,
-                    :script
+                    :script,
+                    :website
 
       def initialize
-        @name                 = 'fpm-scriptable'
-        @version              = '1.0'
-        @author               = 'Ted Elwartowski <xelwarto.pub@gmail.com> (2014)'
+        @name                 = FPM::Scriptable::NAME
+        @version              = FPM::Scriptable::VERSION
+        @author               = "#{FPM::Scriptable::AUTHOR} #{FPM::Scriptable::EMAIL}"
+        @website              = FPM::Scriptable::WEBSITE
         @log_level            = :info
 
         @script               = ScriptConstants.new

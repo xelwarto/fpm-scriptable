@@ -81,7 +81,8 @@ EOF
 
    #{c.name}
    Version: #{c.version}
-   Written by: #{c.author}
+   Author:  #{c.author}
+   Website: #{c.website}
 EOF
         banner
       end

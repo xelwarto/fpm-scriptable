@@ -15,9 +15,9 @@ Gem::Specification.new do |spec|
                       "versioned."
   spec.licenses     = ['Apache-2.0']
   spec.platform     = Gem::Platform::RUBY
-  spec.authors      = ['Ted Elwartowski']
-  spec.email        = ['xelwarto.pub@gmail.com']
-  spec.homepage     = 'https://github.com/xelwarto/fpm-scriptable'
+  spec.authors      = [FPM::Scriptable::AUTHOR]
+  spec.email        = [FPM::Scriptable::EMAIL]
+  spec.homepage     = FPM::Scriptable::WEBSITE
 
   spec.add_dependency 'curb', '~> 0.8'
   spec.add_dependency 'fpm', '~> 1.3'
