@@ -36,7 +36,7 @@ gem install fpm-scriptable
 ## Usage
 
 ```bash
-bin/fpm-script --script <script_file>
+fpm-script --script <script_file>
 ```
 
 ## Sample Scripts
