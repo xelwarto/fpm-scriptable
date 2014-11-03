@@ -7,12 +7,12 @@ Gem::Specification.new do |spec|
   spec.version      = FPM::Scriptable::VERSION
   spec.summary      = 'Scriptable software packaging using FPM'
   spec.description  = "fpm-scriptable provides a simple and easy to use " \
-											"scripting interface for creating software packages " \
-											"with fpm (https://github.com/jordansissel/fpm). " \
-											"Software packages are created using easy to read " \
-											"scripts written in a simple DSL. Scripts can easily " \
-											"be added to source code to ensure they are properly " \
-											"versioned."
+                      "scripting interface for creating software packages " \
+                      "with fpm (https://github.com/jordansissel/fpm). " \
+                      "Software packages are created using easy to read " \
+                      "scripts written in a simple DSL. Scripts can easily " \
+                      "be added to source code to ensure they are properly " \
+                      "versioned."
   spec.licenses     = ['Apache-2.0']
   spec.platform     = Gem::Platform::RUBY
   spec.authors      = ['Ted Elwartowski']
@@ -31,6 +31,6 @@ Gem::Specification.new do |spec|
   files << "LICENSE"
   spec.files = files
   spec.require_paths << 'lib'
-	spec.bindir = 'bin'
+  spec.bindir = 'bin'
   spec.executables << 'fpm-script'
 end

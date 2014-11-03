@@ -13,7 +13,7 @@
 # limitations under the License.
 
 module FPM
-	module Scriptable
+  module Scriptable
     NAME    = 'fpm-scriptable'
     VERSION = '1.0'
   end
