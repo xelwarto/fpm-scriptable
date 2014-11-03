@@ -18,7 +18,20 @@ Current Plug-ins:
 
 ## Installation
 
-Currently a Ruby gem is not available ... source can be cloned and then run bundler to install dependencies.
+#### Installation Requirements:
+
+**Installation of required packages on RHEL based systems**
+```bash
+yum -y groupinstall "Development tools"
+yum -y install rpm-build libcurl-devel ruby-devel
+```
+
+#### Installation of fpm-scriptable
+
+```bash
+gem install fpm-scriptable
+```
+
 
 ## Usage
 
