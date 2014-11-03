@@ -32,5 +32,5 @@ Gem::Specification.new do |spec|
   spec.files = files
   spec.require_paths << 'lib'
 	spec.bindir = 'bin'
-  spec.executables << 'fpm-scriptable'
+  spec.executables << 'fpm-script'
 end
