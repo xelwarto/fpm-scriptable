@@ -13,25 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-bin_path = String.new
-bin_dir = String.new
-app_dir = String.new
+require 'rubygems'
+require 'bundler'
+Bundler.setup
 
-bin_path = File.expand_path($0)
-if bin_path && bin_path != ""
-  bin_dir = File.dirname(bin_path)
-end
+require 'fpm/scriptable'
 
-if bin_dir && bin_dir != ''
-  app_dir = "#{bin_dir}/.."
-  $:.push "#{app_dir}/lib"
-else
-  puts 'Error: unable to locate bin directory'
-  exit 1
-end
-
-Dir.chdir(app_dir) do
-  require 'fpm/scriptable'
-end
-FPM::Scriptable::App.run(app_dir)
+FPM::Scriptable::App.run(nil)
 exit 0
