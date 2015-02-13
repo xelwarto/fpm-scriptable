@@ -128,7 +128,7 @@ module FPM
           #@fpm.directories +=
           #@fom.attributes[:excludes]
         rescue Exception => e
-          log.error "#{e}"
+          @log.error "#{e}"
         end
 
         package = nil
@@ -154,7 +154,7 @@ module FPM
             @log.error 'Failed to convert - Packaging object is invalid'
           end
         rescue Exception => e
-          log.error "#{e}"
+          @log.error "#{e}"
         end
 
       end
