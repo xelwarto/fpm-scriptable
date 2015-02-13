@@ -52,7 +52,7 @@ module FPM
         @config           = FPM::Scriptable::Config.instance.config
         c                 = FPM::Scriptable::Constants.instance
 
-        @log.debug 'FPM::Scriptable::RPM - initializing Script'
+        @log.debug 'FPM::Scriptable::Script - initializing Script'
 
         @version          = c.script.version
         @iteration        = c.script.iteration
@@ -63,11 +63,11 @@ module FPM
       end
 
       def fpm_obj
-        @log.error 'fpm_obj method not implemented in plugin'
+        @log.error 'FPM::Scriptable::Script - fpm_obj method not implemented in plugin'
       end
 
       def fpm_convert
-        @log.error 'fpm_convert method not implemented in plugin'
+        @log.error 'FPM::Scriptable::Script - fpm_convert method not implemented in plugin'
       end
 
       def plugin_init
@@ -128,7 +128,7 @@ module FPM
           #@fpm.directories +=
           #@fom.attributes[:excludes]
         rescue Exception => e
-          @log.error "#{e}"
+          @log.error "FPM::Scriptable::Script - #{e}"
         end
 
         package = nil
@@ -141,20 +141,20 @@ module FPM
                 if !overwrite.nil?
                   force = overwrite.to_s.downcase
                   if force == 'true'
-                    @log.info "Overwrite enabled - Removing package: #{package.to_s}"
+                    @log.info "FPM::Scriptable::Script - overwrite enabled - removing package: #{package.to_s}"
                     FileUtils.rm_f(package.to_s)
                   end
                 end
               end
 
-              @log.info "Building package: #{package.to_s}"
+              @log.info "FPM::Scriptable::Script - building package: #{package.to_s}"
               package.output(package.to_s)
             end
           else
-            @log.error 'Failed to convert - Packaging object is invalid'
+            @log.error 'FPM::Scriptable::Script - failed to convert - packaging object is invalid'
           end
         rescue Exception => e
-          @log.error "#{e}"
+          @log.error "FPM::Scriptable::Script - #{e}"
         end
 
       end
