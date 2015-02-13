@@ -17,12 +17,14 @@ module FPM
     class Log
       include Singleton
       attr_accessor :quiet, :color
+      attr_reader :has_error
 
       def initialize
         @quiet = false
         @color = true
 
         @logger = nil
+        @has_error = false
       end
 
       def show(msg,quiet=@quiet)
@@ -68,6 +70,7 @@ module FPM
       end
 
       def error(msg)
+        @has_error = true
         if !msg.nil?
           if !@logger.nil?
             @logger.error msg
@@ -76,6 +79,7 @@ module FPM
       end
 
       def fatal(msg)
+        @has_error = true
         if !msg.nil?
           if !@logger.nil?
             @logger.fatal msg
