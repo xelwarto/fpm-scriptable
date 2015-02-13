@@ -30,10 +30,10 @@ module FPM
           @log.add(level.to_sym, @log.color, STDOUT)
         end
 
-        @log.show FPM::Scriptable::Util.banner, @log.quiet, true
+        @log.show FPM::Scriptable::Util.banner
 
         if args[:help] || args[:h]
-          @log.show FPM::Scriptable::Util.usage, false, false
+          @log.show FPM::Scriptable::Util.usage, false
           exit 0
         end
 
@@ -45,7 +45,7 @@ module FPM
         script = args[:script]
         if script.nil?
           @log.fatal 'FPM::Scriptable::App - No script file was specified'
-          @log.show FPM::Scriptable::Util.usage, @log.quiet, false
+          @log.show FPM::Scriptable::Util.usage
           exit 1
         else
           if script !~ /^\//

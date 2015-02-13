@@ -25,13 +25,8 @@ module FPM
         @logger = nil
       end
 
-      def show(msg,quiet=@is_quiet,in_color=false)
-        if msg
-          if @color && in_color
-            msg = "\e[33m#{msg}\e[0m"
-          else
-            msg = "\e[0m#{msg}\e[0m"
-          end
+      def show(msg,quiet=@quiet)
+        if !msg.nil?
           puts msg unless quiet
         end
       end
@@ -49,7 +44,7 @@ module FPM
       end
 
       def info(msg)
-        if msg
+        if !msg.nil?
           if !@logger.nil?
             @logger.info msg
           end
@@ -57,7 +52,7 @@ module FPM
       end
 
       def warn(msg)
-        if msg
+        if !msg.nil?
           if !@logger.nil?
             @logger.warn msg
           end
@@ -65,7 +60,7 @@ module FPM
       end
 
       def debug(msg)
-        if msg
+        if !msg.nil?
           if !@logger.nil?
             @logger.debug msg
           end
@@ -73,7 +68,7 @@ module FPM
       end
 
       def error(msg)
-        if msg
+        if !msg.nil?
           if !@logger.nil?
             @logger.error msg
           end
@@ -81,7 +76,7 @@ module FPM
       end
 
       def fatal(msg)
-        if msg
+        if !msg.nil?
           if !@logger.nil?
             @logger.fatal msg
           end
