@@ -63,11 +63,11 @@ module FPM
       end
 
       def fpm_obj
-        @log.error 'FPM::Scriptable::Script - fpm_obj method not implemented in plugin'
+        @log.warn 'FPM::Scriptable::Script - fpm_obj method not implemented in plugin'
       end
 
       def fpm_convert
-        @log.error 'FPM::Scriptable::Script - fpm_convert method not implemented in plugin'
+        @log.warn 'FPM::Scriptable::Script - fpm_convert method not implemented in plugin'
       end
 
       def plugin_init
@@ -141,7 +141,7 @@ module FPM
                 if !overwrite.nil?
                   force = overwrite.to_s.downcase
                   if force == 'true'
-                    @log.info "FPM::Scriptable::Script - overwrite enabled - removing package: #{package.to_s}"
+                    @log.warn "FPM::Scriptable::Script - overwrite enabled - removing package: #{package.to_s}"
                     FileUtils.rm_f(package.to_s)
                   end
                 end
