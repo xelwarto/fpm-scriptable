@@ -30,7 +30,7 @@ module FPM
           @log.add(level.to_sym, @log.color, STDOUT)
         end
 
-        @log.show FPM::Scriptable::Util.banner
+        @log.show FPM::Scriptable::Util.banner unless args[:no_banner]
 
         if args[:help] || args[:h]
           @log.show FPM::Scriptable::Util.usage, false

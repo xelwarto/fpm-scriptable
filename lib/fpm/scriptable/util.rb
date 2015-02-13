@@ -59,6 +59,7 @@ Usage:
     --quiet                 Messages are not displayed to the console
     --nocolor               Turn off colors in console output
     --log_level <lvl>       STDOUT log level (info, debug, error)
+    --no_banner             Do not show the banner
 
     --script <file>         Script to build
 
