@@ -51,17 +51,16 @@ module FPM
 
       def self.usage
         usage = <<EOF
-
-  Usage:
+Usage:
   #{$0} OPTIONS
 
-    Options:
-      --help                  Display this help screen
-      --quiet                 Messages are not displayed to the console
-      --nocolor               Turn off colors in console output
-      --log_level <lvl>       STDOUT log level (info, debug, error)
+  Options:
+    --help                  Display this help screen
+    --quiet                 Messages are not displayed to the console
+    --nocolor               Turn off colors in console output
+    --log_level <lvl>       STDOUT log level (info, debug, error)
 
-      --script <file>         Script to build
+    --script <file>         Script to build
 
 EOF
         usage
@@ -78,11 +77,11 @@ EOF
  |_| | .__/|_| |_| |_|     |___/\\___|_|  |_| .__/ \\__\\__,_|_.__/|_|\\___|
      |_|                                   |_|
 
+ #{c.name}
+ Version: #{c.version}
+ Author:  #{c.author}
+ Website: #{c.website}
 
-   #{c.name}
-   Version: #{c.version}
-   Author:  #{c.author}
-   Website: #{c.website}
 EOF
         banner
       end
