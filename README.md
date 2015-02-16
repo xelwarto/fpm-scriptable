@@ -1,5 +1,7 @@
 # fpm-scriptable
 
+[![Gem Version](https://badge.fury.io/rb/fpm-scriptable.svg)](http://badge.fury.io/rb/fpm-scriptable)
+
 <dl>
   <dt>Author</dt><dd>Ted Elwartowski (<a href="mailto:xelwarto.pub@gmail.com">xelwarto.pub@gmail.com</a>)</dd>
   <dt>Copyright</dt><dd>Copyright © 2014 Ted Elwartowski</dd>
