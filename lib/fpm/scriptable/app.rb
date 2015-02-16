@@ -24,9 +24,14 @@ module FPM
         @log.quiet = true if args[:quiet] && ( !args[:help] && !args[:h] )
         @log.quiet = true if args[:q] && ( !args[:help] && !args[:h] )
 
+        level = FPM::Scriptable::Constants.instance.log_level
+        level = args[:log_level] if args[:log_level]
+
+        if !args[:logfile].nil?
+          @log.add(level.to_sym, false, args[:logfile])
+        end
+
         if !@log.quiet
-          level = FPM::Scriptable::Constants.instance.log_level
-          level = args[:log_level] if args[:log_level]
           @log.add(level.to_sym, @log.color, STDOUT)
         end
 
