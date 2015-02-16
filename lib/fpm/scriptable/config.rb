@@ -29,11 +29,8 @@ module FPM
       protected
 
       class GeneralConfig
-        attr_accessor :app_dir
 
         def initialize
-          @app_dir        = nil
-
           @u_defined      = {}
         end
 

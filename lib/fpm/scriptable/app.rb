@@ -16,7 +16,7 @@ module FPM
   module Scriptable
     class App
 
-      def self.run(app_dir)
+      def self.run
         @log = FPM::Scriptable::Log.instance
         args = FPM::Scriptable::Util.get_args
 
@@ -39,7 +39,6 @@ module FPM
 
         cfg = FPM::Scriptable::Config.instance
         @config = cfg.config
-        @config.app_dir = app_dir
         @config.working_dir = Dir.getwd
 
         script = args[:script]
@@ -48,12 +47,7 @@ module FPM
           @log.show FPM::Scriptable::Util.usage
         else
           if script !~ /^\//
-            script = "#{@config.app_dir}/#{script}"
-
-            if !File.exists? script
-              script = args[:script]
-              script = "#{@config.working_dir}/#{script}"
-            end
+            script = "#{@config.working_dir}/#{script}"
           end
 
           @log.debug "FPM::Scriptable::App - Script file path set to: #{script}"
