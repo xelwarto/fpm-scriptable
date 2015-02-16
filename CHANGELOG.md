@@ -7,6 +7,7 @@
 * Updated logging in the FPM::Scriptable::Script class
 * Added option --nobanner for disabling the display of the application banner
 * Simplified the executable library setup
+* Updated how supporting classes are loaded
 
 ### v1.0
 
