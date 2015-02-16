@@ -1,5 +1,9 @@
 # fpm-scriptable change log
 
+### v1.0.2
+
+* Added --logfile option for logging to a file
+
 ### v1.0.1
 
 * Removed color output from log show method as it was not honoring the --nocolor option properly
