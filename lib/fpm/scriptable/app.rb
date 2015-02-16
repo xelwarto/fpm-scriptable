@@ -34,7 +34,7 @@ module FPM
 
         if args[:help] || args[:h]
           @log.show FPM::Scriptable::Util.usage, false
-          exit 1
+          return 1
         end
 
         cfg = FPM::Scriptable::Config.instance
@@ -87,8 +87,8 @@ module FPM
           end
         end
 
-        exit 1 if @log.has_error
-        exit 0
+        return 1 if @log.has_error
+        return 0
       end
 
    end

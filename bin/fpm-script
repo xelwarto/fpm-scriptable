@@ -17,5 +17,4 @@ require 'rubygems'
 $: << File.join(File.dirname(__FILE__), "..", "lib")
 require 'fpm/scriptable'
 
-FPM::Scriptable::App.run
-exit 0
+exit(FPM::Scriptable::App.run || 0)
