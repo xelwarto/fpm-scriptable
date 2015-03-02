@@ -16,9 +16,8 @@ module FPM
   module Scriptable
     class App
 
-      def self.run
+      def self.run(args={:help => ''})
         @log = FPM::Scriptable::Log.instance
-        args = FPM::Scriptable::Util.get_args
 
         @log.color = false if args[:nocolor]
         @log.quiet = true if args[:quiet] && ( !args[:help] && !args[:h] )
