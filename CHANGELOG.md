@@ -3,6 +3,7 @@
 ### v1.0.2
 
 * Added --logfile option for logging to a file
+* Updated the App class to accept arguments as a parameter to the run method so that it can be called independently from the executable. The executable will now handle parsing the command line options and passing them to the App class.
 
 ### v1.0.1
 
