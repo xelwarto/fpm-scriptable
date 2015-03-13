@@ -2,6 +2,9 @@
 
 ### v1.0.3
 
+* Added **clobber** method to the FPM::Scriptable::Log class which allows for the log instance to be re-initialized.
+* Updated the application run method to include the clobbering of the logs. This fixes a logging issue when the application run method is called multiple times from a single execution.
+
 ### v1.0.2
 
 * Added --logfile option for logging to a file
