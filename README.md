@@ -1,7 +1,6 @@
 # fpm-scriptable
 
 [![GitHub version](https://badge.fury.io/gh/xelwarto%2Ffpm-scriptable.svg)](http://badge.fury.io/gh/xelwarto%2Ffpm-scriptable)
-
 [![Gem Version](https://badge.fury.io/rb/fpm-scriptable.svg)](http://badge.fury.io/rb/fpm-scriptable)
 
 <dl>
