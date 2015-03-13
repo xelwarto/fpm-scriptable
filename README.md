@@ -37,8 +37,22 @@ gem install fpm-scriptable
 
 ## Usage
 
+From CLI
 ```bash
 fpm-script --script <script_file>
+```
+
+From Ruby
+```ruby
+require 'rubygems'
+require 'fpm/scriptable'
+
+opts = {
+  :nobanner => true,
+  :nocolor => true,
+  :script => 'script.rb',
+}
+FPM::Scriptable::App.run(opts)
 ```
 
 ## Sample Scripts
