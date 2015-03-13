@@ -1,5 +1,7 @@
 # fpm-scriptable change log
 
+### v1.0.3
+
 ### v1.0.2
 
 * Added --logfile option for logging to a file
