@@ -91,6 +91,7 @@ module FPM
           end
         end
 
+        @log.clobber
         return 1 if @log.has_error
         return 0
       end

@@ -20,6 +20,10 @@ module FPM
       attr_reader :has_error
 
       def initialize
+        clobber
+      end
+
+      def clobber
         @quiet = false
         @color = true
 
