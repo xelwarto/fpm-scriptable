@@ -18,6 +18,7 @@ module FPM
 
       def self.run(args={:help => ''})
         @log = FPM::Scriptable::Log.instance
+        @log.clobber
 
         @log.color = false if args[:nocolor]
         @log.quiet = true if args[:quiet] && ( !args[:help] && !args[:h] )
@@ -91,7 +92,6 @@ module FPM
           end
         end
 
-        @log.clobber
         return 1 if @log.has_error
         return 0
       end
