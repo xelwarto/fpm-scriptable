@@ -15,7 +15,7 @@
 module FPM
   module Scriptable
     NAME    = 'fpm-scriptable'
-    VERSION = '1.0.3'
+    VERSION = '1.0.4'
     AUTHOR  = 'Ted Elwartowski'
     EMAIL   = '<xelwarto.pub@gmail.com>'
     WEBSITE = 'https://github.com/xelwarto/fpm-scriptable'
